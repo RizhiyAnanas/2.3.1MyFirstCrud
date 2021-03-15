@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("admin")
 public class MyController {
 
 
@@ -32,7 +32,7 @@ public class MyController {
     @PostMapping()
     public String create(@ModelAttribute("user") User user){
         service.add(user);
-        return "redirect:/users";
+        return "redirect:/admin";
     }
 
     @GetMapping("/{id}")
@@ -52,7 +52,7 @@ public class MyController {
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id") Long id){
         service.deleteUser(id);
-        return "redirect:/users";
+        return "redirect:/admin";
     }
 
     @GetMapping("/{id}/edit")
@@ -64,6 +64,6 @@ public class MyController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") User user,@PathVariable("id") Long id ){
         service.update(user, id);
-        return "redirect:/users";
+        return "redirect:/admin";
     }
 }

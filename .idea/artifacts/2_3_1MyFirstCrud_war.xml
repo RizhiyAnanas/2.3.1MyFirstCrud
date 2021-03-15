@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="2.3.1MyFirstCrud:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>2.3.1MyFirstCrud</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Spring-Security_test.war">
+      <element id="artifact" artifact-name="2.3.1MyFirstCrud:war exploded" />
+    </root>
+  </artifact>
+</component>
