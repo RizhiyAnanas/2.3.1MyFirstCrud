@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @EnableJpaRepositories(basePackages ={"fedorenko.spring.security.repositories"})
+@Transactional
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;

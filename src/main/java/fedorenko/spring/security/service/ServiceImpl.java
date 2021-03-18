@@ -1,8 +1,8 @@
 package fedorenko.spring.security.service;
 
-import fedorenko.spring.security.dao.Dao;
 
 import fedorenko.spring.security.model.User;
+import fedorenko.spring.security.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,37 +12,40 @@ import java.util.List;
 @Transactional
 public class ServiceImpl implements Service {
 
+
+    private UserRepository userRepository;
     @Autowired
-    private Dao dao;
+    public ServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public void add(User user) {
-        dao.add(user);
+        userRepository.save(user);
     }
 
     @Override
     public List<User> getList() {
-        return dao.getList();
+        return userRepository.findAll();
     }
 
     @Override
     public void deleteUser(Long id) {
-        User user = dao.show(id);
-        dao.remove(user);
+        userRepository.deleteById(id);
     }
 
     @Override
     public User show(Long id) {
-        return dao.show(id);
+        return userRepository.findById(id).orElse(null);
     }
 
     @Override
     public void update(User user, Long id) {
-        User updateUser= dao.show(id);
+        User updateUser= userRepository.findById(id).orElse(null);
         updateUser.setAge(user.getAge());
         updateUser.setEmail(user.getEmail());
         updateUser.setName(user.getName());
         updateUser.setSurname(user.getSurname());
-        dao.merge(updateUser);
+        userRepository.saveAndFlush(updateUser);
     }
 }

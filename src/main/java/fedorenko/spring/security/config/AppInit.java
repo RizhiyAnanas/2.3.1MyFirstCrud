@@ -1,5 +1,6 @@
 package fedorenko.spring.security.config;
 
+import org.springframework.orm.hibernate5.support.OpenSessionInViewFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -32,4 +33,5 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
         aContext.addFilter("hiddenHttpMethodFilter",
                 new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
     }
+
 }
